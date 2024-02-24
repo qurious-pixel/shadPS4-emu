@@ -30,8 +30,9 @@ jobs:
       run: git submodule update --init --recursive
 
     - name: Install misc packages
-      run: |
-       sudo apt-get update && sudo apt install libx11-dev libgl1-mesa-glx mesa-common-dev libfuse2 libwayland-dev libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-icccm4 libxcb-image0-dev libxcb-cursor-dev libxxhash-dev libvulkan-dev
+      run: >
+       sudo apt-get update && sudo apt install libx11-dev libgl1-mesa-glx mesa-common-dev libfuse2 libwayland-dev libxcb-keysyms1 
+       libxcb-randr0 libxcb-render-util0 libxcb-icccm4 libxcb-image0-dev libxcb-cursor-dev libxxhash-dev libvulkan-dev
 
     - name: Install newer Clang
       run: |
@@ -57,8 +58,15 @@ jobs:
       run: |
         cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}} --parallel
         ls -al build
-        ls -al build/src
 
+    - name: Upload executable
+      uses: actions/upload-artifact@v4
+      with:
+        name: shadps4-ubuntu64
+        path: |
+          ${{github.workspace}}/build/shadps4
+          ${{github.workspace}}/build/libSDL3.so.0.0.0
+        
     - name: Run AppImage packaging script
       run:  |
         chmod +x ./.github/linux-appimage-qt.sh
@@ -67,5 +75,5 @@ jobs:
     - name: Upload executable
       uses: actions/upload-artifact@v4
       with:
-        name: shadps4-linux-qt
+        name: shadps4-appimage
         path: Shadps4-x86_64.AppImage 
