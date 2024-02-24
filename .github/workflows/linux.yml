@@ -7,7 +7,7 @@ name: Linux-Qt
 
 on:
   push:
-    branches: [ "icon" ]
+    branches: [ "linux" ]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
