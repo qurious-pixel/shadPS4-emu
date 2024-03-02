@@ -5,7 +5,7 @@ name: Windows-Qt
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "icon2-test" ]
   pull_request:
     branches: [ "main" ]
 
