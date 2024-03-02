@@ -337,10 +337,6 @@ if (WIN32)
     add_definitions(-DNOMINMAX -DWIN32_LEAN_AND_MEAN)
 endif()
 
-if(WIN32)
-    target_sources(shadps4 PRIVATE src/shadps4.rc)
-endif()
-
 target_include_directories(shadps4 PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 if(ENABLE_QT_GUI)
