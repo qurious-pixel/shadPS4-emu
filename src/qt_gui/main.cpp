@@ -20,6 +20,7 @@ int main(int argc, char* argv[]) {
     // std::string stdStr = gameDataPath.toStdString();
     std::filesystem::path path(stdStr);
 #ifdef _WIN64
+    QString gameDataPath = qApp->applicationDirPath() + "/game_data/";
     std::wstring wstdStr = gameDataPath.toStdWString();
     path = std::filesystem::path(wstdStr);
 #endif
