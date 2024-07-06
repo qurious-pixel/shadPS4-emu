@@ -21,8 +21,10 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v4
-      with:
-          submodules: recursive
+    - name: Fetch submodules
+      run: |
+        git config --system core.longpaths true
+        git submodule update --init --recursive
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
