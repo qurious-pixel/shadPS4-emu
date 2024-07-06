@@ -15,8 +15,8 @@ int main(int argc, char* argv[]) {
     const auto config_dir = Common::FS::GetUserPath(Common::FS::PathType::UserDir);
     Config::load(config_dir / "config.toml");
 #ifdef _WIN64
-    // QString gameDataPath = qApp->applicationDirPath() + "/game_data/";
-    std::wstring wstdStr = std::wstring(config_dir) + "/game_data/";
+    QString gameDataPath = qApp->applicationDirPath() + "/game_data/";
+    std::wstring wstdStr = gameDataPath.toStdWString();
     std::filesystem::path path(wstdStr);
     // path = std::filesystem::path(wstdStr);
 #else
