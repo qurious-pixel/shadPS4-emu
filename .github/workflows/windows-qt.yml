@@ -22,8 +22,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-      with:
-          submodules: recursive
+    - name: Fetch submodules
+      run: |
+        git config --system core.longpaths true
+        git submodule update --init --recursive
 
     - name: Setup Qt
       uses: jurplel/install-qt-action@v4
