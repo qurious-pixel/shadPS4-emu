@@ -3,8 +3,6 @@
 
 #include <QtWidgets/QApplication>
 
-#include <filesystem>
-
 #include "common/config.h"
 #include "core/file_sys/fs.h"
 #include "qt_gui/game_install_dialog.h"
@@ -17,9 +15,10 @@ int main(int argc, char* argv[]) {
     const auto config_dir = Common::FS::GetUserPath(Common::FS::PathType::UserDir);
     Config::load(config_dir / "config.toml");
 #ifdef _WIN64
-    QString gameDataPath = qApp->applicationDirPath() + "/game_data/";
-    std::wstring wstdStr = gameDataPath.toStdWString();
-    path = std::filesystem::path(wstdStr);
+    // QString gameDataPath = qApp->applicationDirPath() + "/game_data/";
+    std::wstring wstdStr = std::wstring(config_dir) + "/game_data/";
+    std::filesystem::path path(wstdStr);
+    // path = std::filesystem::path(wstdStr);
 #else
     std::string stdStr = std::string(config_dir) + "/game_data/";
     std::filesystem::path path(stdStr);
