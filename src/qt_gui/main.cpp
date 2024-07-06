@@ -3,6 +3,8 @@
 
 #include <QtWidgets/QApplication>
 
+#include <filesystem>
+
 #include "common/config.h"
 #include "core/file_sys/fs.h"
 #include "qt_gui/game_install_dialog.h"
