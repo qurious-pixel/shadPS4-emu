@@ -14,15 +14,13 @@ int main(int argc, char* argv[]) {
     QApplication a(argc, argv);
     const auto config_dir = Common::FS::GetUserPath(Common::FS::PathType::UserDir);
     Config::load(config_dir / "config.toml");
-    // QString gameDataPath = config_dir + "/game_data/";
-    std::string stdStr = std::string(config_dir) + "/game_data/";
-    // QString gameDataPath = qApp->applicationDirPath() + "/game_data/";
-    // std::string stdStr = gameDataPath.toStdString();
-    std::filesystem::path path(stdStr);
 #ifdef _WIN64
     QString gameDataPath = qApp->applicationDirPath() + "/game_data/";
     std::wstring wstdStr = gameDataPath.toStdWString();
     path = std::filesystem::path(wstdStr);
+#else
+    std::string stdStr = std::string(config_dir) + "/game_data/";
+    std::filesystem::path path(stdStr);
 #endif
     std::filesystem::create_directory(path);
 
