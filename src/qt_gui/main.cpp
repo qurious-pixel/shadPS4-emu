@@ -15,7 +15,7 @@ int main(int argc, char* argv[]) {
     const auto config_dir = Common::FS::GetUserPath(Common::FS::PathType::UserDir);
     Config::load(config_dir / "config.toml");
     // QString gameDataPath = config_dir + "/game_data/";
-    std::string stdStr = std::to_string(config_dir) + "/game_data/";
+    std::string stdStr = config_dir "/game_data/";
     // QString gameDataPath = qApp->applicationDirPath() + "/game_data/";
     // std::string stdStr = gameDataPath.toStdString();
     std::filesystem::path path(stdStr);
