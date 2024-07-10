@@ -25,6 +25,7 @@ void TrophyViewer::PopulateTrophyWidget(QString title) {
     if (!dir.exists()) {
         std::filesystem::path path(gameTrpPath_.toStdWString());
 #else
+    const auto config_dir = Common::FS::GetUserPath(Common::FS::PathType::UserDir);
     QString trophyDir = std::string(config_dir) + "/game_data/" + title + "/TrophyFiles";
     QDir dir(trophyDir);
     if (!dir.exists()) {
