@@ -20,7 +20,6 @@ int main(int argc, char* argv[]) {
     std::filesystem::path path(wstdStr);
 #else
     std::string stdStr = std::string(config_dir) + "/game_data/";
-    
     std::filesystem::path path(stdStr);    
 #endif
     std::filesystem::create_directory(path);
