@@ -118,6 +118,7 @@ void GameGridFrame::SetGridBackgroundImage(int row, int column) {
             qApp->applicationDirPath() +
             QString::fromStdString("/game_data/" + (*m_games_shared)[itemID].serial + "/pic1.png");
 #else
+            const auto config_dir = Common::FS::GetUserPath(Common::FS::PathType::UserDir);
             std::string(config_dir) +
             QString::fromStdString("/game_data/" + (*m_games_shared)[itemID].serial + "/pic1.png");
 #endif
