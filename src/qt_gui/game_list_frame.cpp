@@ -105,7 +105,7 @@ void GameListFrame::SetListBackgroundImage(QTableWidgetItem* item) {
                                "/pic1.png");
 #else
         const auto config_dir = Common::FS::GetUserPath(Common::FS::PathType::UserDir);
-        std::string(config_dir) +
+    std::string(config_dir) +
         QString::fromStdString("/game_data/" + m_game_info->m_games[item->row()].serial +
                                "/pic1.png");
 #endif
