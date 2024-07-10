@@ -1,9 +1,7 @@
 // SPDX-FileCopyrightText: Copyright 2024 shadPS4 Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#include <filesystem>
-
-//#include "common/config.h"
+#include "common/config.h"
 #include "game_grid_frame.h"
 
 GameGridFrame::GameGridFrame(std::shared_ptr<GameInfoClass> game_info_get, QWidget* parent)
