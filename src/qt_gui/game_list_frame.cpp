@@ -98,13 +98,13 @@ void GameListFrame::SetListBackgroundImage(QTableWidgetItem* item) {
     }
 
     QString pic1Path = QString::fromStdString(m_game_info->m_games[item->row()].pic_path);
-#ifdef _WIN64
     QString blurredPic1Path =
+#ifdef _WIN64
         qApp->applicationDirPath() +
         QString::fromStdString("/game_data/" + m_game_info->m_games[item->row()].serial +
                                "/pic1.png");
 #else
-    QString blurredPic1Path =
+        const auto config_dir = Common::FS::GetUserPath(Common::FS::PathType::UserDir);
         std::string(config_dir) +
         QString::fromStdString("/game_data/" + m_game_info->m_games[item->row()].serial +
                                "/pic1.png");
