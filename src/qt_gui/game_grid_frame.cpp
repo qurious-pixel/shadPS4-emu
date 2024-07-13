@@ -114,8 +114,9 @@ void GameGridFrame::SetGridBackgroundImage(int row, int column) {
     if (item) {
         QString pic1Path = QString::fromStdString((*m_games_shared)[itemID].pic_path);
         QString blurredPic1Path =
-            qApp->applicationDirPath() +
-            QString::fromStdString("/game_data/" + (*m_games_shared)[itemID].serial + "/pic1.png");
+            QDir::currentPath() +
+            QString::fromStdString("/user/game_data/" + (*m_games_shared)[itemID].serial + 
+                                   "/pic1.png");
 
         backgroundImage = QImage(blurredPic1Path);
         if (backgroundImage.isNull()) {
