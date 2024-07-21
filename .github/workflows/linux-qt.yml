@@ -23,9 +23,11 @@ jobs:
       run: git submodule update --init --recursive
 
     - name: Install misc packages
-      run: >
-       sudo add-apt-repository ppa:ubuntu-toolchain-r/ppa -y &&
-       sudo apt update && sudo apt install libx11-dev libxext-dev libwayland-dev libfuse2 clang g++-14
+      run: |
+       sudo add-apt-repository ppa:ubuntu-toolchain-r/ppa -y
+       sudo apt update && sudo apt install libx11-dev libxext-dev libwayland-dev libfuse2 clang gcc-14
+       gcc --version
+       g++ --version
 
     - name: Setup Qt
       uses: jurplel/install-qt-action@v4
