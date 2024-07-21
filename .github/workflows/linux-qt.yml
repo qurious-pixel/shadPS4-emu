@@ -24,7 +24,8 @@ jobs:
 
     - name: Install misc packages
       run: >
-       sudo apt-get update && sudo apt install libx11-dev libxext-dev libwayland-dev libfuse2 clang build-essential
+       sudo add-apt-repository ppa:ubuntu-toolchain-r/ppa -y &&
+       sudo apt update && sudo apt install libx11-dev libxext-dev libwayland-dev libfuse2 clang g++-14
 
     - name: Setup Qt
       uses: jurplel/install-qt-action@v4
