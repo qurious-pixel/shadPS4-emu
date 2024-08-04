@@ -23,7 +23,7 @@ jobs:
       run: git submodule update --init --recursive
 
     - name: Install misc packages
-      run: sudo apt update && sudo apt install libx11-dev libxext-dev libwayland-dev libfuse2 libmpc-dev libstdc++-14-dev
+      run: sudo apt update && sudo apt install libx11-dev libxext-dev libwayland-dev libfuse2 libmpc-dev libstdc++-11-dev
 
     - name: Install clang-18
       run: |
