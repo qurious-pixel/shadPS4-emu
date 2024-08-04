@@ -23,9 +23,16 @@ jobs:
       run: git submodule update --init --recursive
 
     - name: Install misc packages
+      run: sudo apt update && sudo apt install libx11-dev libxext-dev libwayland-dev libfuse2 clang
+
+    - name: Install gcc-14
       run: |
-       sudo add-apt-repository ppa:ubuntu-toolchain-r/ppa -y
-       sudo apt update && sudo apt install libx11-dev libxext-dev libwayland-dev libfuse2 clang gcc-14
+       wget http://ftp.gnu.org/gnu/gcc/gcc-14.2.0/gcc-14.2.0.tar.gz
+       tar -xf gcc-14.2.0.tar.gz
+       cd gcc-14.2.0
+       ./configure -v --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --prefix=/usr/local/gcc-14.2.0 --enable-checking=release --enable-languages=c,c++ --disable-multilib --program-suffix=-14.2.0
+       make
+       sudo make install
        gcc --version
        g++ --version
 
