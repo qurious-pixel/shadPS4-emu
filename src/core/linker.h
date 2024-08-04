@@ -5,6 +5,7 @@
 
 #include <algorithm>
 #include <mutex>
+#include <ranges>
 #include <vector>
 #include "core/module.h"
 
