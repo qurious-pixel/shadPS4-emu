@@ -27,11 +27,11 @@ jobs:
 
     - name: Install clang-18
       run: |
-        #wget https://apt.llvm.org/llvm.sh
-        #chmod u+x llvm.sh
-        #sudo ./llvm.sh 18
-        wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
-        sudo apt install -y clang-18 lldb-18 lld-18 libc++-18-dev libc++abi-18-dev
+        wget https://apt.llvm.org/llvm.sh
+        chmod u+x llvm.sh
+        sudo ./llvm.sh 18 all
+        #wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
+        #sudo apt install -y clang-18 lldb-18 lld-18 libc++-18-dev libc++abi-18-dev
         
     #- name: Install gcc-14
     #  run: |
