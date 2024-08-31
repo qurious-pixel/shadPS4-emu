@@ -28,8 +28,9 @@ jobs:
     
     - uses: actions/cache@v4
       with:
-         key: ccache-ubuntu-release-${{ github.sha }}
-         restore-keys: ccache-ubuntu-release-
+        path: ${{ env.CCACHE_DIR }}
+        key: ccache-ubuntu-release-${{ github.sha }}
+        restore-keys: ccache-ubuntu-release-
 
     - name: Ccache setup
       run: ccache -s
