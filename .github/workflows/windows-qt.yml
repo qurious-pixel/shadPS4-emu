@@ -5,7 +5,7 @@ name: Windows-Qt
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "ccache" ]
   pull_request:
     branches: [ "main" ]
 
@@ -30,8 +30,21 @@ jobs:
         arch: win64_msvc2019_64
         archives: qtbase qttools
 
+    - name: Set up build environment (windows-latest)
+      run: |
+          iwr -useb 'https://raw.githubusercontent.com/scoopinstaller/install/master/install.ps1' -outfile 'install.ps1'
+          .\install.ps1 -RunAsAdmin
+          scoop install ninja sccache --global
+          echo "${env:PATH}" >> ${env:GITHUB_PATH}
+
+    - uses: actions/cache@v4
+      with:
+          path: ~\AppData\Local\Mozilla\sccache
+          key: ccache-windows-release-${{ github.sha }}
+          restore-keys: ccache-windows-release-
+
     - name: Configure CMake
-      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -T ClangCL -DENABLE_QT_GUI=ON
+      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -T ClangCL -DENABLE_QT_GUI=ON -DCMAKE_C_COMPILER_LAUNCHER=sccache -DCMAKE_CXX_COMPILER_LAUNCHER=sccache
 
     - name: Build
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}} --parallel
