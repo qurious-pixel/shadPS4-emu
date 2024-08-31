@@ -11,7 +11,7 @@ on:
 
 env:
   BUILD_TYPE: Release
-  CCACHE_DIR: ~/.ccache
+  CCACHE_DIR: $HOME/.cache/ccache
 
 jobs:
   build:
