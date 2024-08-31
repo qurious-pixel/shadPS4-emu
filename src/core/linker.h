@@ -3,10 +3,12 @@
 
 #pragma once
 
-#include <algorithm>
+
 #include <mutex>
-#include <ranges>
 #include <vector>
+#include <boost/range/algorithm.hpp>
+#include <boost/range/algorithm_ext.hpp>
+#include <boost/range/iterator_range.hpp>
 #include "core/module.h"
 
 namespace Core {
@@ -70,7 +72,7 @@ public:
         Relocate(m);
         for (auto& module : m_modules) {
             const auto imports = module->GetImportModules();
-            if (std::ranges::contains(imports, m->name, &ModuleInfo::name)) {
+            if (boost::ranges::contains(imports, m->name, &ModuleInfo::name)) {
                 Relocate(module.get());
             }
         }
