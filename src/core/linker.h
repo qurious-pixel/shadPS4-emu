@@ -7,8 +7,7 @@
 #include <mutex>
 #include <vector>
 #include <boost/range/algorithm.hpp>
-#include <boost/range/algorithm_ext.hpp>
-#include <boost/range/iterator_range.hpp>
+#include <boost/range/adaptor/transformed.hpp>
 #include "core/module.h"
 
 namespace Core {
