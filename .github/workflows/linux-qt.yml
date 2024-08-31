@@ -33,7 +33,7 @@ jobs:
         restore-keys: ccache-ubuntu-release-
 
     - name: Ccache setup
-      run: ccache -s
+      run: ccache -p
           
     - name: Configure CMake
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DENABLE_QT_GUI=ON
