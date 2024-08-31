@@ -70,7 +70,7 @@ public:
         Relocate(m);
         for (auto& module : m_modules) {
             const auto imports = module->GetImportModules();
-            if (boost::ranges::contains(imports, m->name, &ModuleInfo::name)) {
+            if (boost::range::contains(imports, m->name, &ModuleInfo::name)) {
                 Relocate(module.get());
             }
         }
