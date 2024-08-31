@@ -11,6 +11,7 @@ on:
 
 env:
   BUILD_TYPE: Release
+  CCACHE_DIR: ~/Library/Caches/ccache
 
 jobs:
   build:
