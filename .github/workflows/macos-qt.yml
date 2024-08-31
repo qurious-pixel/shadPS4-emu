@@ -5,7 +5,7 @@ name: macOS-Qt
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "ccache" ]
   pull_request:
     branches: [ "main" ]
 
@@ -29,7 +29,9 @@ jobs:
     - name: Install MoltenVK
       run: |
         arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        arch -x86_64 /usr/local/bin/brew install molten-vk
+        arch -x86_64 /usr/local/bin/brew install molten-vk ccache ninja
+        echo "$(brew --prefix ccache)/libexec" >> $GITHUB_PATH
+        ccache --set-config=compiler_check=content
 
     - name: Setup Qt
       uses: jurplel/install-qt-action@v4
@@ -39,6 +41,12 @@ jobs:
         target: desktop
         arch: clang_64
         archives: qtbase qttools
+
+    - uses: actions/cache@v4
+      with:
+          path: ~/Library/Caches/ccache
+          key: cache-macos-release-${{ github.sha }}
+          restore-keys: cache-macos-release-
 
     - name: Configure CMake
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_OSX_ARCHITECTURES=x86_64 -DENABLE_QT_GUI=ON
