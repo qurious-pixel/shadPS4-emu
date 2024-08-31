@@ -5,8 +5,8 @@
 
 #include <mutex>
 #include <vector>
-#include <boost/range/adaptor/transformed.hpp>
 #include <boost/range/algorithm.hpp>
+#include <boost/range/algorithm_ext.hpp>
 #include "core/module.h"
 
 namespace Core {
@@ -70,7 +70,7 @@ public:
         Relocate(m);
         for (auto& module : m_modules) {
             const auto imports = module->GetImportModules();
-            if (boost::range::contains(imports, m->name, &ModuleInfo::name)) {
+            if (boost::range::find_if(imports, [&m](const ModuleInfo& info) { return info.name == m->name; }) != imports.end()) {
                 Relocate(module.get());
             }
         }
