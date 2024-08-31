@@ -3,7 +3,6 @@
 
 #pragma once
 
-
 #include <mutex>
 #include <vector>
 #include <boost/range/adaptor/transformed.hpp>
