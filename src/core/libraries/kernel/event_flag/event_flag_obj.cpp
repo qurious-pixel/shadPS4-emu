@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: Copyright 2024 shadPS4 Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#include <boost/thread.hpp>
 #include <boost/chrono.hpp>
+#include <boost/thread.hpp>
 #include <core/libraries/error_codes.h>
 #include "event_flag_obj.h"
 
