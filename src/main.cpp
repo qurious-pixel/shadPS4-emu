@@ -30,10 +30,11 @@ int main(int argc, char* argv[]) {
             std::string patchFile = argv[i + 1];
             MemoryPatcher::patchFile = patchFile;
         }
-        if (curArg == "-f") || (curArg == "--fullscreen") {
-            bool isFullscreen = true;
-        }
-    }
+        if (curArg == "-f")
+            || (curArg == "--fullscreen") {
+                bool isFullscreen = true;
+            }
+     }
 
     Core::Emulator emulator;
     emulator.Run(argv[1]);
