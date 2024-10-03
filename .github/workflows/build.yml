@@ -5,7 +5,7 @@ name: Build and Release
 
 on:
   push:
-    branches: [ "gstreamer" ]
+    branches: [ "fullscreen" ]
   pull_request:
     branches: [ "*" ]
 
